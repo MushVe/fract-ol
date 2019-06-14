@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   drawing.c                                          :+:      :+:    :+:   */
+/*   julia.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cseguier <cseguier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -11,14 +11,6 @@
 /* ************************************************************************** */
 
 #include "fractol.h"
-
-void		put_data(t_param *p, int incr, int color)
-{
-	p->img_data[incr] = color;
-	p->img_data[incr + 1] = color;
-	p->img_data[incr + 2] = color;
-	p->img_data[incr + 3] = 0x00;
-}
 
 t_complex	c_add(t_complex x, t_complex y)
 {
@@ -71,13 +63,13 @@ void		julia(t_param *p)
 				z1 = c_add(c_sqr(z0), p->c_var);
 				if (ft_sqrt(z1.a * z1.a + z1.b * z1.b) > p->radius)
 				{
-					put_data(p, ((y * W_HEI) + x) * 4, iter % 255 + 1);
+					put_data(p, ((y * W_HEI) + x) * 4);
 					break;
 				}
 				z0 = z1;
 			}
 			if (iter > 3)
-				put_data(p, ((y * W_HEI) + x) * 4, 0);
+				put_data(p, ((y * W_HEI) + x) * 4);
 		}
 	}
 }

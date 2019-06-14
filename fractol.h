@@ -44,8 +44,10 @@ typedef struct	s_param
 }				t_param;
 
 void			put_exit(char *msg);
+void			put_data(t_param *p, int incr);
 int				key_hook(int key, void *p);
 int				expose_hook(t_param *p);
 void			julia(t_param *p);
+void			mandelbrot(t_param *p);
 
 #endif

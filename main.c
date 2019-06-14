@@ -18,6 +18,14 @@ void	put_exit(char *msg)
 	exit(0);
 }
 
+void		put_data(t_param *p, int incr)
+{
+	p->img_data[incr] = 0xFF;
+	p->img_data[incr + 1] = 0xFF;
+	p->img_data[incr + 2] = 0xFF;
+	p->img_data[incr + 3] = 0x00;
+}
+
 void	init_param(t_param *p)
 {
 	p->id_set = 0;
@@ -32,10 +40,12 @@ int		main(int ac, char **av)
 
 	if (ac != 2)
 		put_exit("Select a set:\n1 - Julia\n2 - Mandelbrot\n3 - ...");
-	p.id_set = ft_atoi(av[1]);
 
 	init_param(&p);
-
+	p.id_set = ft_atoi(av[1]);
+	ft_putnbr(p.id_set);
+	ft_putendl("");
+	
 	p.mlx_ptr = mlx_init();
 	p.win_ptr = mlx_new_window(p.mlx_ptr, W_LEN, W_HEI, "fractol");
 	p.img_ptr = mlx_new_image(p.mlx_ptr, W_LEN, W_HEI);

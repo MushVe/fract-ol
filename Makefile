@@ -14,7 +14,7 @@ NAME = fractol
 
 LIBFT = libft/libft.a
 
-FILE = main.c drawing.c hook.c
+FILE = main.c julia.c mandel.c hook.c
 
 INC = -I libft -I /usr/local/include/mlx.h
 MLX = -lmlx -framework OpenGL -framework AppKit
