@@ -16,14 +16,11 @@ int		expose_hook(t_param *p)
 {
 	ft_bzero(p->img_data, W_LEN * W_HEI * p->bpp / 8);
 
-	ft_putnbr(p->id_set);
-	ft_putendl("");
-
 	if (p->id_set == 1)
 		julia(p);
 	if (p->id_set == 2)
 	{
-		ft_putendl("999");
+	//	ft_putendl("999");
 		mandelbrot(p);
 	}
 //	if (p->id_set == 3)

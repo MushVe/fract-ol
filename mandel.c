@@ -40,7 +40,7 @@ void	mandelbrot(t_param *p)
 	f_img = (max_img - min_img) / (W_HEI - 1);
 	max_iter = 10;
 
-	ft_putendl("000");
+//	ft_putendl("000");
 
 	y = -1;
 	while (++y < W_HEI)
@@ -53,7 +53,7 @@ void	mandelbrot(t_param *p)
 		}
 	}
 
-	ft_putendl("111");
+//	ft_putendl("111");
 
 	y = -1;
 	while (++y < W_HEI)
@@ -69,9 +69,9 @@ void	mandelbrot(t_param *p)
 			n = -1;
 			while (++n < max_iter)
 			{
-				ft_putstr("\t"); ft_putnbr(x);
-				ft_putstr("\t:\t"); ft_putnbr(y);
-				ft_putstr("\t:\t"); ft_putnbr(n); ft_putstr("\n");
+			// 	ft_putstr("\t"); ft_putnbr(x);
+			// 	ft_putstr("\t:\t"); ft_putnbr(y);
+			// 	ft_putstr("\t:\t"); ft_putnbr(n); ft_putstr("\n");
 				z_real2 = z_real * z_real;
 				z_img2 = z_img * z_img;
 				if(z_real2 + z_img2 > 4)
@@ -82,6 +82,7 @@ void	mandelbrot(t_param *p)
 				z_img = 2 * z_real * z_img + c_img;
 				z_real = z_real2 - z_img2 + c_real;
 			}
+			
 			if (inside) 
 				put_data(p, ((y * W_HEI) + x) * 4);
 		}
