@@ -18,20 +18,21 @@ void	put_exit(char *msg)
 	exit(0);
 }
 
-void		put_data(t_param *p, int incr)
-{
-	p->img_data[incr] = 0xFF;
-	p->img_data[incr + 1] = 0xFF;
-	p->img_data[incr + 2] = 0xFF;
-	p->img_data[incr + 3] = 0x00;
-}
-
 void	init_param(t_param *p)
 {
-	p->id_set = 0;
 	p->radius = 2;
 	p->c_var.a = 1;
 	p->c_var.b = 1;
+	p->max_iter = 10;
+	p->min_real = -2.0;
+	p->max_real = 1.0;
+	p->min_img = -1.2;
+	p->max_img = p->min_img + (p->max_real - p->min_real) * W_HEI / W_LEN;
+	p->red = 80;
+	p->green = 160;
+	p->blue = 255;
+	p->f_real = (p->max_real - p->min_real) / (W_LEN - 1);
+	p->f_img = (p->max_img - p->min_img) / (W_HEI - 1);
 }
 
 int		main(int ac, char **av)
@@ -41,8 +42,9 @@ int		main(int ac, char **av)
 	if (ac != 2)
 		put_exit("Select a set:\n1 - Julia\n2 - Mandelbrot\n3 - ...");
 
-	init_param(&p);
 	p.id_set = ft_atoi(av[1]);
+
+	init_param(&p);
 	ft_putnbr(p.id_set);
 	ft_putendl("");
 	

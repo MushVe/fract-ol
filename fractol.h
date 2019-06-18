@@ -31,6 +31,22 @@ typedef struct	s_param
 {
 	int			id_set;
 	double		radius;
+	double		f_real;
+	double		f_img;
+	double		c_real;
+	double		c_img;
+	double		z_real;
+	double		z_img;
+	int			x;
+	int			y;
+	int			max_iter;
+	double		min_real;
+	double		max_real;
+	double		min_img;
+	double		max_img;
+	int			red;
+	int			green;
+	int			blue;
 
 	t_complex	c_var;
 
@@ -44,7 +60,7 @@ typedef struct	s_param
 }				t_param;
 
 void			put_exit(char *msg);
-void			put_data(t_param *p, int incr);
+void			put_color_regular(t_param *p, int incr, int n);
 int				key_hook(int key, void *p);
 int				expose_hook(t_param *p);
 void			julia(t_param *p);

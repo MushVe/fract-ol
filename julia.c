@@ -63,13 +63,13 @@ void		julia(t_param *p)
 				z1 = c_add(c_sqr(z0), p->c_var);
 				if (ft_sqrt(z1.a * z1.a + z1.b * z1.b) > p->radius)
 				{
-					put_data(p, ((y * W_HEI) + x) * 4);
+					put_color_regular(p, ((y * W_HEI) + x) * 4, 0);
 					break;
 				}
 				z0 = z1;
 			}
 			if (iter > 3)
-				put_data(p, ((y * W_HEI) + x) * 4);
+				put_color_regular(p, ((y * W_HEI) + x) * 4, 0);
 		}
 	}
 }

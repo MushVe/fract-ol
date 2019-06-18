@@ -19,10 +19,7 @@ int		expose_hook(t_param *p)
 	if (p->id_set == 1)
 		julia(p);
 	if (p->id_set == 2)
-	{
-	//	ft_putendl("999");
 		mandelbrot(p);
-	}
 //	if (p->id_set == 3)
 //		vacant();
 	mlx_put_image_to_window(p->mlx_ptr, p->win_ptr, p->img_ptr, 0, 0);
@@ -34,6 +31,10 @@ void	slide(t_param *p, int key)
 {
 	if (key == 53)
 		put_exit("HOW");
+	if (key == 69)
+		p->max_iter += 10;
+	if (key == 78)
+		p->max_iter -= 10;
 	expose_hook(p);
 }
 
