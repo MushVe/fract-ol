@@ -44,9 +44,12 @@ int		key_hook(int key, void *p)
 }
 
 /*
- * 	  4
- * 	1 3 2
- *    5
+** mouse inputs
+**   -------
+**  |   4   |
+**  | 1 3 2 |
+**  |   5   |
+**   -------
 */
 
 int		mouse_hook(int button, int x, int y, t_param *p)
