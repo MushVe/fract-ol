@@ -62,6 +62,7 @@ typedef struct	s_param
 void			put_exit(char *msg);
 void			put_color_regular(t_param *p, int incr, int n);
 int				key_hook(int key, void *p);
+int				mouse_hook(int button, int x, int y, t_param *param);
 int				expose_hook(t_param *p);
 void			julia(t_param *p);
 void			mandelbrot(t_param *p);

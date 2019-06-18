@@ -26,11 +26,8 @@ int		expose_hook(t_param *p)
 	return (0);
 }
 
-
 void	slide(t_param *p, int key)
 {
-	if (key == 53)
-		put_exit("HOW");
 	if (key == 69)
 		p->max_iter += 10;
 	if (key == 78)
@@ -43,5 +40,29 @@ int		key_hook(int key, void *p)
 	if (key == 53)
 		put_exit("exit ./fdf");
 	slide(p, key);
+	return (0);
+}
+
+/*
+ * 	  4
+ * 	1 3 2
+ *    5
+*/
+
+int		mouse_hook(int button, int x, int y, t_param *p)
+{
+	(void)x;
+	(void)y;
+	if (button == 1)
+		;
+	if (button == 2)
+		;
+	if (button == 3)
+		;
+	if (button == 4)
+		;
+	if (button == 5)
+		;
+	expose_hook(p);
 	return (0);
 }
