@@ -21,34 +21,49 @@
 # define W_LEN 1000
 # define W_HEI 1000
 
-typedef struct	s_complex
+typedef struct	s_re
 {
-	double	a;
-	double	b;
-}				t_complex;
+	double	max;
+	double	min;
+	double	c;
+	double	z;
+	double	f;
+}				t_re;
+
+typedef struct	s_im
+{
+	double	max;
+	double	min;
+	double	c;
+	double	z;
+	double	f;
+}				t_im;
 
 typedef struct	s_param
 {
-	int			id_set;
 	double		radius;
-	double		f_real;
-	double		f_img;
-	double		c_real;
-	double		c_img;
-	double		z_real;
-	double		z_img;
-	int			x;
-	int			y;
+	int			id_set;
+	double		cr;
+	double		ci;
+	double		zr;
+	double		zi;
+	double		tmp;
 	int			max_iter;
-	double		min_real;
-	double		max_real;
-	double		min_img;
-	double		max_img;
+	int			iter;
+	int			x0;
+	int			y0;
+	double		x1;
+	double		y1;
+	double		x2;
+	double		y2;
+	int			mx;
+	int			my;
 	int			red;
 	int			green;
 	int			blue;
 
-	t_complex	c_var;
+	t_re		*re;
+	t_im		*im;
 
 	char		*img_data;
 	int			bpp;
@@ -60,10 +75,12 @@ typedef struct	s_param
 }				t_param;
 
 void			put_exit(char *msg);
-void			put_color_regular(t_param *p, int incr, int n);
+void			put_color_regular(t_param *p, int x, int y);
+void			put_color_no(t_param *p, int x, int y);
 int				key_hook(int key, void *p);
 int				mouse_hook(int button, int x, int y, t_param *param);
 int				expose_hook(t_param *p);
+void			zoom(t_param *p, int x, int y, int id);
 void			julia(t_param *p);
 void			mandelbrot(t_param *p);
 

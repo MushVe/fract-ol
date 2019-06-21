@@ -18,31 +18,45 @@ void	put_exit(char *msg)
 	exit(0);
 }
 
-void	init_param(t_param *p)
+void	init_param(t_param *p, t_im	*im, t_re *re)
 {
-	p->radius = 2;
-	p->c_var.a = 1;
-	p->c_var.b = 1;
-	p->max_iter = 10;
-	p->min_real = -2.3;
-	p->max_real = 0.7;
-	p->min_img = -1.5;
-	p->max_img = p->min_img + (p->max_real - p->min_real) * W_HEI / W_LEN;
-	p->red = 80;
-	p->green = 160;
-	p->blue = 255;
-	p->f_real = (p->max_real - p->min_real) / (W_LEN - 1);
-	p->f_img = (p->max_img - p->min_img) / (W_HEI - 1);
+	p->re = re;
+	p->im = im;
+	
+	p->max_iter = 30;
+
+	p->re->min = -2.3;
+	p->re->max = 0.7;
+	p->re->min = -1.5;
+	p->im->max = p->re->min + (p->re->max - p->re->min) * W_HEI / W_LEN;
+
+	p->x0 = 0;
+	p->y0 = 0;
+//	p->x1 = -2.3;
+//	p->x2 = 0.7;
+//	p->y1 = -1.5;
+//	p->y2 = p->min_imag + (p->max_real - p->min_real) * W_HEI / W_LEN;
+
+	p->x1 = -2.2;
+	p->x2 = 3;
+	p->y1 = -1.4;
+	p->y2 = 3;
+
+	p->red = 155;
+	p->green = 255;
+	p->blue = 100;
 }
 
 int		main(int ac, char **av)
 {
 	t_param	p;
+	t_im	im;
+	t_re	re;
 
 	if (ac != 2)
 		put_exit("Select a set:\n1 - Julia\n2 - Mandelbrot\n3 - ...");
 	p.id_set = ft_atoi(av[1]);
-	init_param(&p);
+	init_param(&p, &im, &re);
 	p.mlx_ptr = mlx_init();
 	p.win_ptr = mlx_new_window(p.mlx_ptr, W_LEN, W_HEI, "fractol");
 	p.img_ptr = mlx_new_image(p.mlx_ptr, W_LEN, W_HEI);
