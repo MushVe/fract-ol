@@ -90,6 +90,8 @@ int		key_hook(int key, void *p)
 
 int		mouse_hook(int button, int x, int y, t_param *p)
 {
+	p->mx = x;
+	p->my = y;
 	if (button == 1)
 		p->x1 += 0.1;
 	if (button == 2)
@@ -101,7 +103,6 @@ int		mouse_hook(int button, int x, int y, t_param *p)
 	if (button == 5)
 		zoom(p, x, y, 1);
 
-	
 	expose_hook(p);
 	return (0);
 }

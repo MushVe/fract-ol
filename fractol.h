@@ -18,8 +18,8 @@
 # include <stdlib.h>
 # include "minilibx_macos/mlx.h"
 
-# define W_LEN 1000
-# define W_HEI 1000
+# define W_LEN 600
+# define W_HEI 400
 
 typedef struct	s_re
 {
