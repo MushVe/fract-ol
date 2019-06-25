@@ -18,52 +18,31 @@
 # include <stdlib.h>
 # include "minilibx_macos/mlx.h"
 
-# define W_LEN 1000
-# define W_HEI 1000
-
-typedef struct	s_re
-{
-	double	max;
-	double	min;
-	double	c;
-	double	z;
-	double	f;
-}				t_re;
-
-typedef struct	s_im
-{
-	double	max;
-	double	min;
-	double	c;
-	double	z;
-	double	f;
-}				t_im;
+# define W_X 600
+# define W_Y 400
 
 typedef struct	s_param
 {
+	double	re_max;
+	double	re_min;
+	long double	re_c;
+	long double	re_z;
+	long double	re_f;
+
+	double	im_max;
+	double	im_min;
+	long double	im_c;
+	long double	im_z;
+	long double	im_f;
+
 	double		radius;
 	int			id_set;
-	double		cr;
-	double		ci;
-	double		zr;
-	double		zi;
-	double		tmp;
+	long double		tmp;
 	int			max_iter;
 	int			iter;
-	int			x0;
-	int			y0;
-	double		x1;
-	double		y1;
-	double		x2;
-	double		y2;
-	int			mx;
-	int			my;
 	int			red;
 	int			green;
 	int			blue;
-
-	t_re		*re;
-	t_im		*im;
 
 	char		*img_data;
 	int			bpp;

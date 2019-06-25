@@ -18,29 +18,31 @@ void	put_exit(char *msg)
 	exit(0);
 }
 
-void	init_param(t_param *p, t_im	*im, t_re *re)
+void	init_param(t_param *p)
 {
-	p->re = re;
-	p->im = im;
-	
 	p->max_iter = 30;
 
-	p->re->min = -2.3;
-	p->re->max = 0.7;
-	p->re->min = -1.5;
-	p->im->max = p->re->min + (p->re->max - p->re->min) * W_HEI / W_LEN;
+	// p->re->min = -2.3;
+	// p->re->max = 0.7;
+	// p->re->min = -1.5;
+	// p->im->max = p->re->min + (p->re->max - p->re->min) * W_HEI / W_LEN;
 
-	p->x0 = 0;
-	p->y0 = 0;
-//	p->x1 = -2.3;
-//	p->x2 = 0.7;
-//	p->y1 = -1.5;
-//	p->y2 = p->min_imag + (p->max_real - p->min_real) * W_HEI / W_LEN;
+	p->re_min = -2.2;
+	p->re_max = 3.7;
+	p->im_min = -1.3;
+	p->im_max = 2.6;
 
-	p->x1 = -2.2;
-	p->x2 = 3;
-	p->y1 = -1.4;
-	p->y2 = 3;
+	// p->re_min = -2.5;
+	// p->re_max = 1;
+	// p->im_min = -1;
+	// p->im_max = 1;
+
+	p->re_c = 0;
+	p->re_z = 0;
+	p->re_f = 0;
+	p->im_c = 0;
+	p->im_z = 0;
+	p->im_f = 0;
 
 	p->red = 155;
 	p->green = 255;
@@ -50,16 +52,14 @@ void	init_param(t_param *p, t_im	*im, t_re *re)
 int		main(int ac, char **av)
 {
 	t_param	p;
-	t_im	im;
-	t_re	re;
 
 	if (ac != 2)
 		put_exit("Select a set:\n1 - Julia\n2 - Mandelbrot\n3 - ...");
 	p.id_set = ft_atoi(av[1]);
-	init_param(&p, &im, &re);
+	init_param(&p);
 	p.mlx_ptr = mlx_init();
-	p.win_ptr = mlx_new_window(p.mlx_ptr, W_LEN, W_HEI, "fractol");
-	p.img_ptr = mlx_new_image(p.mlx_ptr, W_LEN, W_HEI);
+	p.win_ptr = mlx_new_window(p.mlx_ptr, W_X, W_Y, "fractol");
+	p.img_ptr = mlx_new_image(p.mlx_ptr, W_X, W_Y);
 	p.img_data = mlx_get_data_addr(p.img_ptr, &p.bpp, &p.size_line, &p.e);
 	mlx_key_hook(p.win_ptr, key_hook, &p);
 	mlx_mouse_hook(p.win_ptr, mouse_hook, &p);

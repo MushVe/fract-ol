@@ -14,29 +14,19 @@
 
 int		expose_hook(t_param *p)
 {
-	ft_bzero(p->img_data, W_LEN * W_HEI * p->bpp / 8);
+	ft_bzero(p->img_data, W_X * W_Y * p->bpp / 8);
 
 //	if (p->id_set == 1)
 //		julia(p);
-	p->x0 = 0;
-	p->y0 = 0;
 
-	ft_putstr("x0: "); ft_putnbr((int)(100 * p->x0));
+	ft_putstr("re_min: "); ft_putnbr((int)(100 * p->re_min));
 	ft_putstr("\t\t"); 
-	ft_putstr("y0: "); ft_putnbr((int)(100 * p->y0));
+	ft_putstr("re_max: "); ft_putnbr((int)(100 * p->re_max));
 	ft_putstr("\n"); 
-	ft_putstr("re.min: "); ft_putnbr((int)(100 * p->re->min));
+	ft_putstr("im_min: "); ft_putnbr((int)(100 * p->im_min));
 	ft_putstr("\t\t"); 
-	ft_putstr("re->max: "); ft_putnbr((int)(100 * p->re->max));
-	ft_putstr("\n"); 
-	ft_putstr("im->min: "); ft_putnbr((int)(100 * p->im->min));
-	ft_putstr("\t\t"); 
-	ft_putstr("im->max: "); ft_putnbr((int)(100 * p->im->max));
-	ft_putstr("\n"); 
-	ft_putstr("mx: "); ft_putnbr((int)(100 * p->mx));
-	ft_putstr("\t\t"); 
-	ft_putstr("my: "); ft_putnbr((int)(100 * p->my));
-	ft_putstr("\n++++++++++++++++++++++++++++\n"); 
+	ft_putstr("im_max: "); ft_putnbr((int)(100 * p->im_max));
+	ft_putstr("\n+++++++++++++++++++++++++++++++\n"); 
 
 	if (p->id_set == 2)
 		mandelbrot(p);
@@ -52,22 +42,27 @@ void	slide(t_param *p, int key)
 		p->max_iter += 10;
 	if (key == 78)
 		p->max_iter -= 10;
-	if (key == 126)
-		p->y1 += 0.1;
-	if (key == 125)
-		p->y1 -= 0.1;
-	if (key == 123)
-		p->y2 += 0.1;
-	if (key == 124)
-		p->y2 -= 0.1;
-	if (key == 91)
-		p->x1 += 0.1;
-	if (key == 87)
-		p->x1 -= 0.1;
-	if (key == 92)
-		p->x2 += 0.1;
-	if (key == 88)
-		p->x2 -= 0.1;
+
+	if (key == 12)
+		p->re_min += 0.1;
+	if (key == 0)
+		p->re_min -= 0.1;
+
+	if (key == 13)
+		p->re_max += 0.1;
+	if (key == 1)
+		p->re_max -= 0.1;
+
+	if (key == 14)
+		p->im_min += 0.1;
+	if (key == 2)
+		p->im_min -= 0.1;
+
+	if (key == 15)
+		p->im_max += 0.1;
+	if (key == 3)
+		p->im_max -= 0.1;
+
 	expose_hook(p);
 }
 
@@ -90,16 +85,27 @@ int		key_hook(int key, void *p)
 
 int		mouse_hook(int button, int x, int y, t_param *p)
 {
-	if (button == 1)
-		p->x1 += 0.1;
-	if (button == 2)
-		p->x1 -= 0.1;
-	if (button == 3)
-		;
+	// if (button == 1);
+	// if (button == 2);
+	// if (button == 3);
+
 	if (button == 4)
 		zoom(p, x, y, 0);
 	if (button == 5)
-		zoom(p, x, y, 1);
+	 	zoom(p, x, y, 1);
+
+	if (button == 40)
+	{
+		p->re_max += 0.1;
+		p->im_max += 0.1;
+	}
+
+	if (button == 50)
+	{
+		p->re_max -= 0.1;
+		p->im_max -= 0.1;
+	}
+
 
 	
 	expose_hook(p);
