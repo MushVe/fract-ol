@@ -22,27 +22,25 @@ void	init_param(t_param *p)
 {
 	p->max_iter = 30;
 
-	// p->re->min = -2.3;
-	// p->re->max = 0.7;
-	// p->re->min = -1.5;
-	// p->im->max = p->re->min + (p->re->max - p->re->min) * W_HEI / W_LEN;
+	// p->re_min = -2.2;
+	// p->re_max = 3.7;
+	// p->im_min = -1.3;
+	// p->im_max = 2.6;
 
-	p->re_min = -2.2;
-	p->re_max = 3.7;
-	p->im_min = -1.3;
-	p->im_max = 2.6;
-
-	// p->re_min = -2.5;
-	// p->re_max = 1;
-	// p->im_min = -1;
-	// p->im_max = 1;
+	p->re_min = -2.4;
+	p->re_max = 1;
+	p->im_min = -1.2;
+	p->im_max = 1.2;
 
 	p->re_c = 0;
 	p->re_z = 0;
-	p->re_f = 0;
 	p->im_c = 0;
 	p->im_z = 0;
-	p->im_f = 0;
+
+	p->tmp = 0;
+	p->mx = 0;
+	p->my = 0;
+
 
 	p->red = 155;
 	p->green = 255;

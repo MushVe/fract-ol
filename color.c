@@ -47,20 +47,20 @@ void	put_color_smooth(t_param *p, int incr, int n)
 	p->img_data[incr + 3] = 0x00;
 }
 
-void	zoom(t_param *p, int x, int y, int id)
+void	zoom(t_param *p, int id)
 {
 	double	re_m;
 	double	im_m;
-	double	itrpl;
-	
-	re_m = x / (W_X / (p->re_max - p->re_min)) + p->re_min;
-	im_m = y / (W_Y / (p->im_max - p->im_min)) + p->im_min;
+	double	it;
+
+	re_m = p->mx / (W_X / (p->re_max - p->re_min)) + p->re_min;
+	im_m = p->my / (W_Y / (p->im_max - p->im_min)) + p->im_min;
 	if (id == 1)
-		itrpl = 1.0 / 1.02;
+		it = 1.0 / 1.02;
 	else
-		itrpl = 1.0 * 1.02;
-	p->re_min = re_m + ((p->re_min - re_m) * itrpl);
-	p->re_max = re_m + ((p->re_max - re_m) * itrpl);
-	p->im_min = im_m + ((p->im_min - im_m) * itrpl);
-	p->im_max = im_m + ((p->im_max - im_m) * itrpl);
+		it = 1.0 * 1.02;
+	p->re_min = re_m + ((p->re_min - re_m) * it);
+	p->re_max = re_m + ((p->re_max - re_m) * it);
+	p->im_min = im_m + ((p->im_min - im_m) * it);
+	p->im_max = im_m + ((p->im_max - im_m) * it);
 }

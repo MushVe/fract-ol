@@ -23,21 +23,21 @@
 
 typedef struct	s_param
 {
-	double	re_max;
-	double	re_min;
-	long double	re_c;
-	long double	re_z;
-	long double	re_f;
+	double		re_max;
+	double		re_min;
+	double		re_c;
+	double		re_z;
 
-	double	im_max;
-	double	im_min;
-	long double	im_c;
-	long double	im_z;
-	long double	im_f;
+	double		im_max;
+	double		im_min;
+	double		im_c;
+	double		im_z;
 
-	double		radius;
+	int			mx;
+	int			my;
+
 	int			id_set;
-	long double		tmp;
+	double		tmp;
 	int			max_iter;
 	int			iter;
 	int			red;
@@ -56,10 +56,10 @@ typedef struct	s_param
 void			put_exit(char *msg);
 void			put_color_regular(t_param *p, int x, int y);
 void			put_color_no(t_param *p, int x, int y);
-int				key_hook(int key, void *p);
+int				key_hook(int key, t_param *p);
 int				mouse_hook(int button, int x, int y, t_param *param);
 int				expose_hook(t_param *p);
-void			zoom(t_param *p, int x, int y, int id);
+void			zoom(t_param *p, int id);
 void			julia(t_param *p);
 void			mandelbrot(t_param *p);
 

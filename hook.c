@@ -30,19 +30,13 @@ int		expose_hook(t_param *p)
 
 	if (p->id_set == 2)
 		mandelbrot(p);
-//	if (p->id_set == 3)
-//		vacant();
+
 	mlx_put_image_to_window(p->mlx_ptr, p->win_ptr, p->img_ptr, 0, 0);
 	return (0);
 }
 
 void	slide(t_param *p, int key)
 {
-	if (key == 69)
-		p->max_iter += 10;
-	if (key == 78)
-		p->max_iter -= 10;
-
 	if (key == 12)
 		p->re_min += 0.1;
 	if (key == 0)
@@ -66,10 +60,14 @@ void	slide(t_param *p, int key)
 	expose_hook(p);
 }
 
-int		key_hook(int key, void *p)
+int		key_hook(int key, t_param *p)
 {
 	if (key == 53)
 		put_exit("exit ./fdf");
+	if (key == 69)
+		p->max_iter += 10;
+	if (key == 78)
+		p->max_iter -= 10;
 	slide(p, key);
 	return (0);
 }
@@ -85,27 +83,13 @@ int		key_hook(int key, void *p)
 
 int		mouse_hook(int button, int x, int y, t_param *p)
 {
-	// if (button == 1);
-	// if (button == 2);
-	// if (button == 3);
+	p->mx = x;
+	p->my = y;
 
 	if (button == 4)
-		zoom(p, x, y, 0);
+		zoom(p, 1);
 	if (button == 5)
-	 	zoom(p, x, y, 1);
-
-	if (button == 40)
-	{
-		p->re_max += 0.1;
-		p->im_max += 0.1;
-	}
-
-	if (button == 50)
-	{
-		p->re_max -= 0.1;
-		p->im_max -= 0.1;
-	}
-
+	 	zoom(p, 0);
 
 	expose_hook(p);
 	return (0);

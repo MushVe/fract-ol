@@ -12,42 +12,6 @@
 
 #include "fractol.h"
 
-// void	mandel_suite(t_param *p, int n)
-// {
-// 	double	re_tmp;
-// 	double	im_tmp;
-
-// 	while (++n < p->max_iter)
-// 	{
-// 		re_tmp = p->re_z * p->re_z;
-// 		im_tmp = p->im_z * p->im_z;
-// 		if (re_tmp + im_tmp > 4)
-// 		{
-// 			put_color_regular(p, ((p->y0 * W_HEI) + p->x0) * 4, n);
-// 			return ;
-// 		}
-// 		p->im_z = 2 * p->re_z * p->im_z + p->im_c;
-// 		p->re_z = re_tmp - im_tmp + p->re_c;
-// 	}
-// }
-
-// void	mandelbrot(t_param *p)
-// {
-// 	p->y0 = -1;
-// 	while (++p->y0 < W_HEI)
-// 	{
-// 		p->im_c = p->im_max - p->y0 * p->im_f;
-// 		p->x0 = -1;
-// 		while (++p->x0 < W_LEN)
-// 		{
-// 			p->re_c = p->re_min + p->x0 * p->re_f;
-// 			p->re_z = p->re_c;
-// 			p->im_z = p->im_c;
-// 			mandel_suite(p, -1);
-// 		}
-// 	}
-// }
-
 static void		mandel_suite(t_param *p)
 {
 	p->iter = 0;
@@ -65,14 +29,14 @@ void	mandelbrot(t_param *p)
 	int		x;
 	int		y;
 
-	x = 0;
-	y = 0;
+	x = -1;
+	y = -1;
 	while (++x < W_X)
 	{
 		while (++y < W_Y)
 		{
-			p->re_c = x / (W_X / p->re_max - p->re_min) + p->re_min;
-			p->im_c = y / (W_Y / p->im_max - p->im_min) + p->im_min;
+			p->re_c = x / (W_X / (p->re_max - p->re_min)) + p->re_min;
+			p->im_c = y / (W_Y / (p->im_max - p->im_min)) + p->im_min;
 			p->re_z = 0;
 			p->im_z = 0;
 			mandel_suite(p);
@@ -81,6 +45,6 @@ void	mandelbrot(t_param *p)
 			else
 				put_color_no(p, x, y);
 		}
-		y = 0;
+		y = -1;
 	}
 }
