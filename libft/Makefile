@@ -6,7 +6,7 @@
 #    By: cseguier <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/07 17:07:19 by cseguier          #+#    #+#              #
-#    Updated: 2019/04/11 18:21:23 by cseguier         ###   ########.fr        #
+#    Updated: 2019/06/27 13:42:46 by cseguier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,8 @@
 
 NAME = libft.a
 
-FILE = ft_atoi.c ft_bzero.c ft_capitalize.c ft_foreach.c ft_isalnum.c \
+FILE = ft_abs.c ft_atoi.c ft_bzero.c ft_capitalize.c ft_foreach.c \
+	  ft_isalnum.c \
 	  ft_isalpha.c ft_isascii.c ft_isdigit.c ft_isprint.c ft_itoa.c \
 	  ft_lowcase.c ft_lstadd.c ft_lstdel.c ft_lstdelone.c ft_lstiter.c \
 	  ft_lstmap.c ft_lstnew.c ft_memalloc.c ft_memccpy.c ft_memchr.c \

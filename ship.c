@@ -12,7 +12,7 @@
 
 #include "fractol.h"
 
-static double	ft_abs(double nb)
+static double	ft_absd(double nb)
 {
 	if (nb < 0)
 		return (-nb);
@@ -26,7 +26,7 @@ static void		ship_suite(t_param *p)
 	{
 		p->tmp = p->re_z;
 		p->re_z = p->re_z * p->re_z - p->im_z * p->im_z + p->re_c;
-		p->im_z = 2 * ft_abs(p->im_z * p->tmp) + p->im_c;
+		p->im_z = 2 * ft_absd(p->im_z * p->tmp) + p->im_c;
 		p->iter++;
 	}
 }
