@@ -35,7 +35,8 @@ typedef struct	s_param
 
 	int			mx;
 	int			my;
-
+	int			m_julia;
+	char		*name;
 	int			id_set;
 	double		tmp;
 	int			max_iter;
@@ -59,8 +60,11 @@ void			put_color_no(t_param *p, int x, int y);
 int				key_hook(int key, t_param *p);
 int				mouse_hook(int button, int x, int y, t_param *param);
 int				expose_hook(t_param *p);
+int				julia_mouse(int x, int y, t_param *p);
 void			zoom(t_param *p, int id);
 void			julia(t_param *p);
 void			mandelbrot(t_param *p);
+void			burningship(t_param *p);
+void			init_param(t_param *p);
 
 #endif

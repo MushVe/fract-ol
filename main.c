@@ -18,47 +18,19 @@ void	put_exit(char *msg)
 	exit(0);
 }
 
-void	init_param(t_param *p)
-{
-	p->max_iter = 30;
-
-	// p->re_min = -2.2;
-	// p->re_max = 3.7;
-	// p->im_min = -1.3;
-	// p->im_max = 2.6;
-
-	p->re_min = -2.4;
-	p->re_max = 1;
-	p->im_min = -1.2;
-	p->im_max = 1.2;
-
-	p->re_c = 0;
-	p->re_z = 0;
-	p->im_c = 0;
-	p->im_z = 0;
-
-	p->tmp = 0;
-	p->mx = 0;
-	p->my = 0;
-
-
-	p->red = 155;
-	p->green = 255;
-	p->blue = 100;
-}
-
 int		main(int ac, char **av)
 {
 	t_param	p;
 
 	if (ac != 2)
-		put_exit("Select a set:\n1 - Julia\n2 - Mandelbrot\n3 - ...");
+		put_exit("Select a set:\n1 - Julia\n2 - Mandelbrot\n3 - BurningShip");
 	p.id_set = ft_atoi(av[1]);
 	init_param(&p);
 	p.mlx_ptr = mlx_init();
-	p.win_ptr = mlx_new_window(p.mlx_ptr, W_X, W_Y, "fractol");
+	p.win_ptr = mlx_new_window(p.mlx_ptr, W_X, W_Y, p.name);
 	p.img_ptr = mlx_new_image(p.mlx_ptr, W_X, W_Y);
 	p.img_data = mlx_get_data_addr(p.img_ptr, &p.bpp, &p.size_line, &p.e);
+	mlx_hook(p.win_ptr, 6, (1L << 6), &julia_mouse, &p);
 	mlx_key_hook(p.win_ptr, key_hook, &p);
 	mlx_mouse_hook(p.win_ptr, mouse_hook, &p);
 	mlx_expose_hook(p.win_ptr, expose_hook, &p);

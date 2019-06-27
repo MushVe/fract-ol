@@ -13,19 +13,14 @@
 #include "fractol.h"
 
 void	put_color_regular(t_param *p, int x, int y)
-//void	put_color_regular(t_param *p, int incr, int n)
 {
 	int incr;
 
 	incr = (x * 4) + (y * p->size_line);
-	p->img_data[incr] = 100 - (p->blue * p->iter / p->max_iter);
+	p->img_data[incr] = (p->blue * p->iter / p->max_iter);
 	p->img_data[incr + 1] = (p->green * p->iter / p->max_iter);
-	p->img_data[incr + 2] = 100 + (p->red * p->iter / p->max_iter);
+	p->img_data[incr + 2] = (p->red * p->iter / p->max_iter);
 	p->img_data[incr + 3] = 0x00;
-	// p->img_data[incr] = 100 - (p->blue * n / p->max_iter);
-	// p->img_data[incr + 1] = (p->green * n / p->max_iter);
-	// p->img_data[incr + 2] = 100 + (p->red * n / p->max_iter);
-	// p->img_data[incr + 3] = 0x00;
 }
 
 void	put_color_no(t_param *p, int x, int y)
@@ -36,14 +31,6 @@ void	put_color_no(t_param *p, int x, int y)
 	p->img_data[incr] = 0x00;
 	p->img_data[incr + 1] = 0x00;
 	p->img_data[incr + 2] = 0x00;
-	p->img_data[incr + 3] = 0x00;
-}
-
-void	put_color_smooth(t_param *p, int incr, int n)
-{
-	p->img_data[incr] = (p->blue * n / p->max_iter);
-	p->img_data[incr + 1] = (p->green * n / p->max_iter);
-	p->img_data[incr + 2] = (p->red * n / p->max_iter);
 	p->img_data[incr + 3] = 0x00;
 }
 

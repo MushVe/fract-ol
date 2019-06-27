@@ -12,64 +12,40 @@
 
 #include "fractol.h"
 
-t_complex	c_add(t_complex x, t_complex y)
+static void	julia_suite(t_param *p)
 {
-	t_complex c;
+	double tmp;
 
-	c.a = x.a + y.a;
-	c.b = x.b + y.b;
-	return (c);
-}
-
-t_complex	c_sqr(t_complex n)
-{
-	t_complex c;
-
-	c.a = n.a * n.a - n.b * n.b;
-	c.b = 2 * n.a * n.b;
-	return (c);
-}
-
-t_complex	c_map(int x, int y, t_param *p)
-{
-	t_complex	c;
-	int			l;
-
-	l = (W_LEN < W_HEI) ? W_LEN : W_HEI;
-	c.a = 2 * p->radius * (x - W_LEN / 2.0) / l;
-	c.b = 2 * p->radius * (y - W_HEI / 2.0) / l;
-	return (c);
+	p->iter = 0;
+	while (p->re_z * p->re_z + p->im_z * p->im_z < 4 && p->iter < p->max_iter)
+	{
+		p->tmp = p->re_z;
+		tmp = p->mx / (double)100 + p->re_min;
+		p->re_z = p->re_z * p->re_z - p->im_z * p->im_z + tmp;
+		tmp = p->my / (double)100 + p->im_min;
+		p->im_z = 2 * p->im_z * p->tmp + tmp;
+		p->iter++;
+	}
 }
 
 void		julia(t_param *p)
 {
 	int x;
 	int y;
-	int iter;
-	t_complex z0;
-	t_complex z1; 
 
 	x = -1;
-	y = -1;
-	iter = 0;
-
-	while (++x < W_LEN)
+	while (++x < W_X)
 	{
-		while (++y < W_HEI)
+		y = -1;
+		while (++y < W_Y)
 		{
-			z0 = c_map(x, y, p);
-			while (++iter < 3)
-			{
-				z1 = c_add(c_sqr(z0), p->c_var);
-				if (ft_sqrt(z1.a * z1.a + z1.b * z1.b) > p->radius)
-				{
-					put_color_regular(p, ((y * W_HEI) + x) * 4, 0);
-					break;
-				}
-				z0 = z1;
-			}
-			if (iter > 3)
-				put_color_regular(p, ((y * W_HEI) + x) * 4, 0);
+			p->re_z = x / (W_X / (p->re_max - p->re_min)) + p->re_min;
+			p->im_z = y / (W_Y / (p->im_max - p->im_min)) + p->im_min;
+			julia_suite(p);
+			if (p->iter != p->max_iter)
+				put_color_regular(p, x, y);
+			else
+				put_color_no(p, x, y);
 		}
 	}
 }
