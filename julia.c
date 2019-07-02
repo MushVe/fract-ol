@@ -43,7 +43,7 @@ void		julia(t_param *p)
 			p->im_z = y / (W_Y / (p->im_max - p->im_min)) + p->im_min;
 			julia_suite(p);
 			if (p->iter != p->max_iter)
-				put_color_regular(p, x, y);
+				put_color(p, x, y);
 			else
 				put_color_no(p, x, y);
 		}

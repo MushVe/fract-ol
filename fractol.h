@@ -17,6 +17,7 @@
 # include <fcntl.h>
 # include <stdlib.h>
 # include "minilibx_macos/mlx.h"
+# include <math.h>
 
 # define W_X 600
 # define W_Y 400
@@ -36,14 +37,23 @@ typedef struct	s_param
 	int			mx;
 	int			my;
 	int			m_julia;
-	char		*name;
 	int			id_set;
+	int			id_color;
+
+	int			r;
+	int			rn;
+	int			ri;
+	int			g;
+	int			gn;
+	int			gi;
+	int			b;
+	int			bn;
+	int			bi;
+
 	double		tmp;
 	int			max_iter;
 	int			iter;
-	int			red;
-	int			green;
-	int			blue;
+	int			zoom;
 
 	char		*img_data;
 	int			bpp;
@@ -55,13 +65,18 @@ typedef struct	s_param
 }				t_param;
 
 void			put_exit(char *msg);
-void			put_color_regular(t_param *p, int x, int y);
+void			put_color(t_param *p, int x, int y);
 void			put_color_no(t_param *p, int x, int y);
+void			put_color_random(t_param *p, int x, int y);
+void			put_color_regular(t_param *p, int x, int y);
+void			put_color_smooth(t_param *p, int x, int y);
+void			put_color_ship(t_param *p, int x, int y);
 int				key_hook(int key, t_param *p);
 int				mouse_hook(int button, int x, int y, t_param *param);
 int				expose_hook(t_param *p);
 int				julia_mouse(int x, int y, t_param *p);
 void			zoom(t_param *p, int id);
+int				auto_zoom(t_param *p);
 void			julia(t_param *p);
 void			mandelbrot(t_param *p);
 void			burningship(t_param *p);

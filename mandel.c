@@ -41,7 +41,7 @@ void		mandelbrot(t_param *p)
 			p->im_z = 0;
 			mandel_suite(p);
 			if (p->iter < p->max_iter)
-				put_color_regular(p, x, y);
+				put_color(p, x, y);
 			else
 				put_color_no(p, x, y);
 		}

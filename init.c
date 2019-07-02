@@ -14,7 +14,7 @@
 
 static void	init_julia(t_param *p)
 {
-	p->name = ft_strdup("Fract'ol : Julia");
+	p->id_color = 0;
 	p->m_julia = 1;
 	p->re_min = -1.9;
 	p->re_max = 1.9;
@@ -22,14 +22,20 @@ static void	init_julia(t_param *p)
 	p->im_max = 2.2;
 	p->re_c = 0.4;
 	p->im_c = 0.2;
-	p->red = 255;
-	p->green = 255;
-	p->blue = 255;
+	p->r = 255;
+	p->g = 255;
+	p->b = 255;
+	p->rn = 0;
+	p->gn = 0;
+	p->bn = 0;
+	p->ri = 1;
+	p->gi = 1;
+	p->bi = 1;
 }
 
 static void	init_mandel(t_param *p)
 {
-	p->name = ft_strdup("Fract'ol : Mandelbrot");
+	p->id_color = 2;
 	p->m_julia = 0;
 	p->re_min = -2.4;
 	p->re_max = 1;
@@ -37,14 +43,20 @@ static void	init_mandel(t_param *p)
 	p->im_max = 1.2;
 	p->re_c = 0;
 	p->im_c = 0;
-	p->red = 255;
-	p->green = 255;
-	p->blue = 255;
+	p->r = 155;
+	p->g = 255;
+	p->b = 100;
+	p->rn = 100;
+	p->gn = 0;
+	p->bn = 100;
+	p->ri = 1;
+	p->gi = 1;
+	p->bi = -1;
 }
 
 static void	init_ship(t_param *p)
 {
-	p->name = ft_strdup("Fract'ol : Burning Ship");
+	p->id_color = 1;
 	p->m_julia = 0;
 	p->re_min = -2.4;
 	p->re_max = 1.2;
@@ -52,9 +64,15 @@ static void	init_ship(t_param *p)
 	p->im_max = 1.0;
 	p->re_c = 0;
 	p->im_c = 0;
-	p->red = 255;
-	p->green = 100;
-	p->blue = 20;
+	p->r = 155;
+	p->g = 255;
+	p->b = 50;
+	p->rn = 100;
+	p->gn = 0;
+	p->bn = 0;
+	p->ri = 1;
+	p->gi = 1;
+	p->bi = 1;
 }
 
 void		init_param(t_param *p)
@@ -65,6 +83,7 @@ void		init_param(t_param *p)
 	p->tmp = 0;
 	p->mx = 0;
 	p->my = 0;
+	p->zoom = -1;
 	if (p->id_set == 1)
 		init_julia(p);
 	else if (p->id_set == 2)

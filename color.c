@@ -17,37 +17,76 @@ void	put_color_regular(t_param *p, int x, int y)
 	int incr;
 
 	incr = (x * 4) + (y * p->size_line);
-	p->img_data[incr] = (p->blue * p->iter / p->max_iter);
-	p->img_data[incr + 1] = (p->green * p->iter / p->max_iter);
-	p->img_data[incr + 2] = (p->red * p->iter / p->max_iter);
+	p->img_data[incr] = p->bn + p->bi * (p->b * p->iter / p->max_iter);
+	p->img_data[incr + 1] = p->gn + p->gi * (p->g * p->iter / p->max_iter);
+	p->img_data[incr + 2] = p->rn + p->ri * (p->r * p->iter / p->max_iter);
 	p->img_data[incr + 3] = 0x00;
 }
+
+void	put_color_random(t_param *p, int x, int y)
+{
+	int incr;
+	int re;
+
+	re = (W_X / (p->re_max - p->re_min)) - (W_Y / (p->im_max - p->im_min));
+	incr = (x * 4) + (y * p->size_line);
+	p->img_data[incr] = (p->iter * re) / 2;
+	p->img_data[incr + 1] = (p->iter * re) / 3;
+	p->img_data[incr + 2] = (p->iter * re) / 4;
+	p->img_data[incr + 3] = 0x00;
+}
+
+/*
+**	(rand() % 255);
+*/
 
 void	put_color_no(t_param *p, int x, int y)
 {
 	int incr;
+	int	c;
 
+	c = 0x00;
+	if (p->id_color == 0)
+		c = 0xFF;
 	incr = (x * 4) + (y * p->size_line);
-	p->img_data[incr] = 0x00;
-	p->img_data[incr + 1] = 0x00;
-	p->img_data[incr + 2] = 0x00;
+	p->img_data[incr] = c;
+	p->img_data[incr + 1] = c;
+	p->img_data[incr + 2] = c;
 	p->img_data[incr + 3] = 0x00;
 }
 
-void	zoom(t_param *p, int id)
+void	put_color_smooth(t_param *p, int x, int y)
 {
-	double	re_m;
-	double	im_m;
-	double	it;
+	int		incr;
+	double	i;
+	double	log_zn;
+	double	mu;
 
-	re_m = p->mx / (W_X / (p->re_max - p->re_min)) + p->re_min;
-	im_m = p->my / (W_Y / (p->im_max - p->im_min)) + p->im_min;
-	if (id == 1)
-		it = 1.0 / 1.02;
-	else
-		it = 1.0 * 1.02;
-	p->re_min = re_m + ((p->re_min - re_m) * it);
-	p->re_max = re_m + ((p->re_max - re_m) * it);
-	p->im_min = im_m + ((p->im_min - im_m) * it);
-	p->im_max = im_m + ((p->im_max - im_m) * it);
+	log_zn = log(p->re_z * p->re_z + p->im_z * p->im_z) / 2;
+	mu = log(log_zn / log(2)) / log(2);
+	i = p->iter + 1 - mu;
+	i = i / p->max_iter;
+	incr = (x * 4) + (y * p->size_line);
+	p->img_data[incr] = (int)(8.5 * (1 - i) * (1 - i) * (1 - i) * i * 255);
+	p->img_data[incr + 1] = (int)(15 * (1 - i) * (1 - i) * i * i * 255);
+	p->img_data[incr + 2] = (int)(9 * (1 - i) * i * i * i * 255);
+	p->img_data[incr + 3] = 0;
+}
+
+void	put_color_ship(t_param *p, int x, int y)
+{
+	int		incr;
+	double	i;
+	double	log_zn;
+	double	mu;
+
+	log_zn = log(p->re_z * p->re_z + p->im_z * p->im_z) / 2;
+	mu = log(log_zn / log(2)) / log(2);
+	i = p->iter + 1 - mu;
+	i = i / p->max_iter;
+	incr = (x * 4) + (y * p->size_line);
+	p->img_data[incr] = (int)(9 * (1 - i) * i * i * i * 255);
+	p->img_data[incr + 1] = (int)(15 * (1 - i) * (1 - i) * i * i * 255);
+	p->img_data[incr + 2] = (int)(8.5 * (1 - i) * (1 - i) * (1 - i) * i * 255);
+	p->img_data[incr + 3] = 0;
 }
