@@ -114,6 +114,8 @@ int		key_hook(int key, t_param *p)
 
 int		mouse_hook(int button, int x, int y, t_param *p)
 {
+	if (p->id_set == 1 && p->m_julia == 0)
+		return (0);
 	p->mx = x;
 	p->my = y;
 	if (button == 4)
@@ -126,8 +128,8 @@ int		mouse_hook(int button, int x, int y, t_param *p)
 
 int		julia_mouse(int x, int y, t_param *p)
 {
-	if (((x < 0 || x > W_X || y < 0 || y > W_Y)
-		&& p->id_set == 1) || p->m_julia == 0)
+	if (((x < 0 || x > W_X || y < 0 || y > W_Y) && p->id_set == 1)
+		|| p->m_julia == 0)
 		return (0);
 	p->mx = x;
 	p->my = y;

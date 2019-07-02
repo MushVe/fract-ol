@@ -14,10 +14,11 @@
 # define FRACTOL_H
 
 # include "libft/libft.h"
+# include "minilibx_macos/mlx.h"
 # include <fcntl.h>
 # include <stdlib.h>
-# include "minilibx_macos/mlx.h"
 # include <math.h>
+# include <pthread.h>
 
 # define W_X 600
 # define W_Y 400
