@@ -24,19 +24,19 @@ void	printman2(void)
 	ft_putendl("           * * * * * * * * * * * * * * * *");
 	ft_putstr("\t\t\t\t\t\t\t\t");
 	ft_putendl("             * * *   * * * * * * * * * * *");
-	ft_putstr("#### Zoom Options ####\t\t#### Other ####\t\t\t");
+	ft_putstr(" #### Other  ####\t\t #### Zoom Options  ####\t");
 	ft_putendl("                       * * * * * * * * * *");
-	ft_putstr("'Home' Reset Fractal\t\t'+' More Iterations\t\t");
+	ft_putstr("'+' More Iterations\t\t'Home' Reset Fractal\t\t");
 	ft_putendl("                       * * * * * * * * * *");
-	ft_putstr("'Page Up' Auto Zoom In\t\t'-' Less Iterations\t\t");
+	ft_putstr("'-' Less Iterations\t\t'Page Up' Auto Zoom In\t\t");
 	ft_putendl("                         * * * * * * * * *");
-	ft_putstr("'Page Down' Auto Zoom Out\t'>' Multibrot + 1\t\t");
+	ft_putstr("'>' Multibrot + 1\t\t'Page Down' Auto Zoom Out\t");
 	ft_putendl("                         *   * * * * *");
-	ft_putstr("'End' Freeze Zoom\t\t'<' Multibrot - 1\t\t");
+	ft_putstr("'<' Multibrot - 1\t\t'End' Freeze Zoom\t\t");
 	ft_putendl("                               * *");
-	ft_putstr("'Fn' Freeze Mouse\t\t'L' Multibrot * 10\t\t");
+	ft_putstr("'L' Multibrot * 10\t\t'< ^ v >' Move Around\t\t");
 	ft_putendl("                               * *");
-	ft_putstr("\t\t\t\t'K' Multibrot / 10\n");
+	ft_putstr("'K' Multibrot / 10\n'Fn' Freeze Julia Mouse\n\n");
 }
 
 void	printman(void)
@@ -54,7 +54,7 @@ void	printman(void)
 	ft_putendl("                         * * * * * * * * *");
 	ft_putstr("\t\t\t\t\t\t\t\t");
 	ft_putendl("                       * * * * * * * * * *");
-	ft_putstr("#### Select Set ####\t\t#### Select Color ####\t\t");
+	ft_putstr(" #### Select Set  ####\t\t #### Select Color  ####\t");
 	ft_putendl("                       * * * * * * * * * *");
 	printman2();
 }

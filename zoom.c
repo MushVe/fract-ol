@@ -21,13 +21,21 @@ void	zoom(t_param *p, int id)
 	re_m = p->mx / (W_X / (p->re_max - p->re_min)) + p->re_min;
 	im_m = p->my / (W_Y / (p->im_max - p->im_min)) + p->im_min;
 	if (id == 1)
+	{
+		p->i_zoom++;
 		it = 1.0 / 1.02;
+	}
 	else
+	{
+		p->i_zoom--;
 		it = 1.0 * 1.02;
+	}
 	p->re_min = re_m + ((p->re_min - re_m) * it);
 	p->re_max = re_m + ((p->re_max - re_m) * it);
 	p->im_min = im_m + ((p->im_min - im_m) * it);
 	p->im_max = im_m + ((p->im_max - im_m) * it);
+	if (p->i_zoom <= 0)
+		p->i_zoom = 1;
 }
 
 int		auto_zoom(t_param *p)

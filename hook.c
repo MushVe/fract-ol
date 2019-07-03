@@ -57,6 +57,30 @@ int		expose_hook(t_param *p)
 **		p->im_max -= 0.1;
 */
 
+void	slide_next2(t_param *p, int key)
+{
+	if (key == 123)
+	{
+		p->re_min -= 0.1 / p->i_zoom;
+		p->re_max -= 0.1 / p->i_zoom;
+	}
+	if (key == 124)
+	{
+		p->re_min += 0.1 / p->i_zoom;
+		p->re_max += 0.1 / p->i_zoom;
+	}
+	if (key == 125)
+	{
+		p->im_min += 0.1 / p->i_zoom;
+		p->im_max += 0.1 / p->i_zoom;
+	}
+	if (key == 126)
+	{
+		p->im_min -= 0.1 / p->i_zoom;
+		p->im_max -= 0.1 / p->i_zoom;
+	}
+}
+
 void	slide_next(t_param *p, int key)
 {
 	if (key == 47)
@@ -71,7 +95,7 @@ void	slide_next(t_param *p, int key)
 		init_param(p);
 	if (key == 279)
 		p->m_julia = !p->m_julia;
-	expose_hook(p);
+	slide_next2(p, key);
 }
 
 void	slide(t_param *p, int key)
@@ -94,6 +118,7 @@ void	slide(t_param *p, int key)
 		p->id_color = 2;
 	if (key == 15)
 		p->id_color = 3;
+	slide_next(p, key);
 }
 
 int		key_hook(int key, t_param *p)
@@ -121,7 +146,7 @@ int		key_hook(int key, t_param *p)
 		init_param(p);
 	}
 	slide(p, key);
-	slide_next(p, key);
+	expose_hook(p);
 	return (0);
 }
 
@@ -133,17 +158,3 @@ int		key_hook(int key, t_param *p)
 **  |   5   |
 **   -------
 */
-
-int		mouse_hook(int button, int x, int y, t_param *p)
-{
-	if (p->id_set == 1 && p->m_julia == 0)
-		return (0);
-	p->mx = x;
-	p->my = y;
-	if (button == 4)
-		zoom(p, 1);
-	if (button == 5)
-		zoom(p, 0);
-	expose_hook(p);
-	return (0);
-}

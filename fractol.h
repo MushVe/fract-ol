@@ -56,6 +56,7 @@ typedef struct	s_param
 	int			max_iter;
 	int			iter;
 	int			zoom;
+	int			i_zoom;
 
 	char		*img_data;
 	int			bpp;

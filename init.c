@@ -105,6 +105,7 @@ void		init_param(t_param *p)
 	p->tmp = 0;
 	p->mx = 0;
 	p->my = 0;
+	p->i_zoom = 0;
 	p->zoom = -1;
 	if (p->id_set == 1)
 		init_julia(p);

@@ -60,3 +60,17 @@ int			julia_mouse(int x, int y, t_param *p)
 	expose_hook(p);
 	return (0);
 }
+
+int			mouse_hook(int button, int x, int y, t_param *p)
+{
+	if (p->id_set == 1 && p->m_julia == 0)
+		return (0);
+	p->mx = x;
+	p->my = y;
+	if (button == 4)
+		zoom(p, 1);
+	if (button == 5)
+		zoom(p, 0);
+	expose_hook(p);
+	return (0);
+}
