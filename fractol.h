@@ -85,5 +85,6 @@ void			mandelbrot(t_param *p);
 void			burningship(t_param *p);
 void			multibrot(t_param *p);
 void			init_param(t_param *p);
+void			printman(void);
 
 #endif

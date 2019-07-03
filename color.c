@@ -31,8 +31,8 @@ void	put_color_random(t_param *p, int x, int y)
 	re = (W_X / (p->re_max - p->re_min)) - (W_Y / (p->im_max - p->im_min));
 	incr = (x * 4) + (y * p->size_line);
 	p->img_data[incr] = (p->iter * re) / 2;
-	p->img_data[incr + 1] = (p->iter * re) / 3;
-	p->img_data[incr + 2] = (p->iter * re) / 4;
+	p->img_data[incr + 1] = (p->iter * re) / 5;
+	p->img_data[incr + 2] = (p->iter * re) / 3;
 	p->img_data[incr + 3] = 0x00;
 }
 

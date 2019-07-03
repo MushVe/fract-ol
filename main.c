@@ -38,53 +38,6 @@ void	put_color(t_param *p, int x, int y)
 		put_color_regular(p, x, y);
 }
 
-void	printman2(void)
-{
-	ft_putstr("'1' Julia\t\t\t'Q' Regular\t\t\t");
-	ft_putendl("             * * *   * * * * * * * * * * *");
-	ft_putstr("'2' Mandelbrot\t\t\t'W' Smooth\t\t\t");
-	ft_putendl("           * * * * * * * * * * * * * * * *");
-	ft_putstr("'3' BurningShip\t\t\t'E' Psyche\t\t\t");
-	ft_putendl(" * * * * * * * * * * * * * * * * * * *");
-	ft_putstr("'4' Multibrot\t\t\t'R' Binary\t\t\t");
-	ft_putendl("           * * * * * * * * * * * * * * * *");
-	ft_putstr("\t\t\t\t\t\t\t\t");
-	ft_putendl("             * * *   * * * * * * * * * * *");
-	ft_putstr("#### Zoom Options ####\t\t#### Other ####\t\t\t");
-	ft_putendl("                       * * * * * * * * * *");
-	ft_putstr("'Home' Reset Fractal\t\t'+' More Iterations\t\t");
-	ft_putendl("                       * * * * * * * * * *");
-	ft_putstr("'Page Up' Auto Zoom In\t\t'-' Less Iterations\t\t");
-	ft_putendl("                         * * * * * * * * *");
-	ft_putstr("'Page Down' Auto Zoom Out\t'>' Multibrot + 1\t\t");
-	ft_putendl("                         *   * * * * *");
-	ft_putstr("'End' Freeze Zoom\t\t'<' Multibrot - 1\t\t");
-	ft_putendl("                               * *");
-	ft_putstr("'Fn' Freeze Mouse\t\t'L' Multibrot * 10\t\t");
-	ft_putendl("                               * *");
-	ft_putstr("\t\t\t\t'K' Multibrot / 10\n");
-}
-
-void	printman(void)
-{
-	system("clear");
-	ft_putstr("\n                        ..\n");
-	ft_putstr("                      / __)  Hi! Welcome to my Fract'ol.\n");
-	ft_putstr("               .-^^^-/ /\t\t\t\t\t");
-	ft_putendl("                               * *");
-	ft_putstr("            __/       /   I'm here to help!\t\t\t");
-	ft_putendl("                               * *");
-	ft_putstr("           <__.|_|-|_|\t\t\t\t\t\t");
-	ft_putendl("                         *   * * * * *");
-	ft_putstr("\t\t\t\t\t\t\t\t");
-	ft_putendl("                         * * * * * * * * *");
-	ft_putstr("\t\t\t\t\t\t\t\t");
-	ft_putendl("                       * * * * * * * * * *");
-	ft_putstr("#### Select Set ####\t\t#### Select Color ####\t\t");
-	ft_putendl("                       * * * * * * * * * *");
-	printman2();
-}
-
 int		main(int ac, char **av)
 {
 	t_param	p;
