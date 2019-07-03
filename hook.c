@@ -57,62 +57,71 @@ int		expose_hook(t_param *p)
 **		p->im_max -= 0.1;
 */
 
+void	slide_next(t_param *p, int key)
+{
+	if (key == 47)
+		p->n_multi += 1;
+	if (key == 43)
+		p->n_multi -= 1;
+	if (key == 37)
+		p->n_multi *= 10;
+	if (key == 40)
+		p->n_multi /= 10;
+	if (key == 115)
+		init_param(p);
+	if (key == 279)
+		p->m_julia = !p->m_julia;
+	expose_hook(p);
+}
+
 void	slide(t_param *p, int key)
 {
+	if (key == 69)
+		p->max_iter += 10;
+	if (key == 78)
+		p->max_iter -= 10;
 	if (key == 116)
 		p->zoom = 1;
 	if (key == 121)
 		p->zoom = 0;
 	if (key == 119)
 		p->zoom = -1;
-	if (key == 33)
+	if (key == 12)
 		p->id_color = 0;
-	if (key == 30)
+	if (key == 13)
 		p->id_color = 1;
-	if (key == 42)
+	if (key == 14)
 		p->id_color = 2;
-	if (key == 35)
+	if (key == 15)
 		p->id_color = 3;
-	if (key == 43)
-		p->n_multi += 1;
-	if (key == 47)
-		p->n_multi -= 1;
-	if (key == 115)
-		init_param(p);
-	expose_hook(p);
 }
 
 int		key_hook(int key, t_param *p)
 {
 	if (key == 53)
 		put_exit("exit ./fdf");
-	if (key == 69)
-		p->max_iter += 10;
-	if (key == 78)
-		p->max_iter -= 10;
-	if (key == 83)
+	if (key == 18)
 	{
 		p->id_set = 1;
 		init_param(p);
 	}
-	if (key == 84)
+	if (key == 19)
 	{
 		p->id_set = 2;
 		init_param(p);
 	}
-	if (key == 85)
+	if (key == 20)
 	{
 		p->id_set = 3;
 		init_param(p);
 	}
-	if (key == 86)
+	if (key == 21)
 	{
 		p->id_set = 4;
 		init_param(p);
 	}
-	if (key == 82)
-		p->m_julia = !p->m_julia;
 	slide(p, key);
+	slide_next(p, key);
 	return (0);
 }
 
@@ -135,17 +144,6 @@ int		mouse_hook(int button, int x, int y, t_param *p)
 		zoom(p, 1);
 	if (button == 5)
 		zoom(p, 0);
-	expose_hook(p);
-	return (0);
-}
-
-int		julia_mouse(int x, int y, t_param *p)
-{
-	if (((x < 0 || x > W_X || y < 0 || y > W_Y) && p->id_set == 1)
-		|| p->m_julia == 0)
-		return (0);
-	p->mx = x;
-	p->my = y;
 	expose_hook(p);
 	return (0);
 }

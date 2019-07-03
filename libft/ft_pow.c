@@ -17,15 +17,15 @@ double	ft_pow(double x, int y)
 	double	tmp;
 
 	if (y == 0)
-		return 1;
+		return (1);
 	tmp = ft_pow(x, y / 2);
 	if (y % 2 == 0)
-		return tmp * tmp;
+		return (tmp * tmp);
 	else
 	{
 		if (y > 0)
-			return x * tmp * tmp;
+			return (x * tmp * tmp);
 		else
-			return (tmp * tmp) / x;
+			return ((tmp * tmp) / x);
 	}
 }

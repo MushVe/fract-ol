@@ -66,29 +66,10 @@ void	put_color_smooth(t_param *p, int x, int y)
 	nu = log(log_zn / log(2)) / log(2);
 	i = p->iter + 1 - nu;
 	i = i / p->max_iter;
-//	i = i / (p->my * p->mx);
 	incr = (x * 4) + (y * p->size_line);
 	p->img_data[incr] = (int)(8.5 * (1 - i) * (1 - i) * (1 - i) * i * 255);
 	p->img_data[incr + 1] = (int)(15 * (1 - i) * (1 - i) * i * i * 255);
 	p->img_data[incr + 2] = (int)(9 * (1 - i) * i * i * i * 255);
-	p->img_data[incr + 3] = 0;
-}
-
-void	put_color_ship(t_param *p, int x, int y)
-{
-	int		incr;
-	double	i;
-	double	log_zn;
-	double	nu;
-
-	log_zn = log(p->re_z * p->re_z + p->im_z * p->im_z) / 2;
-	nu = log(log_zn / log(2)) / log(2);
-	i = p->iter + 1 - nu;
-	i = i / p->max_iter;
-	incr = (x * 4) + (y * p->size_line);
-	p->img_data[incr] = (int)(9 * (1 - i) * i * i * i * 255);
-	p->img_data[incr + 1] = (int)(15 * (1 - i) * (1 - i) * i * i * 255);
-	p->img_data[incr + 2] = (int)(8.5 * (1 - i) * (1 - i) * (1 - i) * i * 255);
 	p->img_data[incr + 3] = 0;
 }
 

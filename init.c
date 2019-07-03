@@ -77,7 +77,7 @@ static void	init_ship(t_param *p)
 
 static void	init_multi(t_param *p)
 {
-	p->id_color = 2;
+	p->id_color = 3;
 	p->m_julia = 0;
 	p->re_min = -2.4;
 	p->re_max = 1;

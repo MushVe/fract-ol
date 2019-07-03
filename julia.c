@@ -49,3 +49,14 @@ void		julia(t_param *p)
 		}
 	}
 }
+
+int			julia_mouse(int x, int y, t_param *p)
+{
+	if (((x < 0 || x > W_X || y < 0 || y > W_Y) && p->id_set == 1)
+		|| p->m_julia == 0)
+		return (0);
+	p->mx = x;
+	p->my = y;
+	expose_hook(p);
+	return (0);
+}
