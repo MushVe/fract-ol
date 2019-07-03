@@ -26,6 +26,8 @@ void	put_color(t_param *p, int x, int y)
 		put_color_ship(p, x, y);
 	else if (p->id_color == 2)
 		put_color_random(p, x, y);
+	else if (p->id_color == 3)
+		put_color_chess(p, x, y);
 	else
 		put_color_regular(p, x, y);
 }
@@ -35,7 +37,8 @@ int		main(int ac, char **av)
 	t_param	p;
 
 	if (ac != 2)
-		put_exit("Select a set:\n1 - Julia\n2 - Mandelbrot\n3 - BurningShip");
+		put_exit("Select a set:\n1 - Julia\n2 - Mandelbrot\n\
+		3 - BurningShip\n4 - Multibrot\n");
 	p.id_set = ft_atoi(av[1]);
 	init_param(&p);
 	p.mlx_ptr = mlx_init();

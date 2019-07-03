@@ -75,9 +75,31 @@ static void	init_ship(t_param *p)
 	p->bi = 1;
 }
 
+static void	init_multi(t_param *p)
+{
+	p->id_color = 2;
+	p->m_julia = 0;
+	p->re_min = -2.4;
+	p->re_max = 1;
+	p->im_min = -1.2;
+	p->im_max = 1.2;
+	p->re_c = 0;
+	p->im_c = 0;
+	p->r = 155;
+	p->g = 255;
+	p->b = 100;
+	p->rn = 100;
+	p->gn = 0;
+	p->bn = 100;
+	p->ri = 1;
+	p->gi = 1;
+	p->bi = -1;
+}
+
 void		init_param(t_param *p)
 {
 	p->max_iter = 30;
+	p->n_multi = 2;
 	p->re_z = 0;
 	p->im_z = 0;
 	p->tmp = 0;
@@ -90,6 +112,8 @@ void		init_param(t_param *p)
 		init_mandel(p);
 	else if (p->id_set == 3)
 		init_ship(p);
+	else if (p->id_set == 4)
+		init_multi(p);
 	else
 		put_exit("Select a set:\n1 - Julia\n2 - Mandelbrot\n3 - BurningShip");
 }

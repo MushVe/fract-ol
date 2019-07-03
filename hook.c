@@ -32,6 +32,8 @@ int		expose_hook(t_param *p)
 		mandelbrot(p);
 	if (p->id_set == 3)
 		burningship(p);
+	if (p->id_set == 4)
+		multibrot(p);
 	mlx_put_image_to_window(p->mlx_ptr, p->win_ptr, p->img_ptr, 0, 0);
 	return (0);
 }
@@ -69,6 +71,12 @@ void	slide(t_param *p, int key)
 		p->id_color = 1;
 	if (key == 42)
 		p->id_color = 2;
+	if (key == 35)
+		p->id_color = 3;
+	if (key == 43)
+		p->n_multi += 1;
+	if (key == 47)
+		p->n_multi -= 1;
 	if (key == 115)
 		init_param(p);
 	expose_hook(p);
@@ -95,6 +103,11 @@ int		key_hook(int key, t_param *p)
 	if (key == 85)
 	{
 		p->id_set = 3;
+		init_param(p);
+	}
+	if (key == 86)
+	{
+		p->id_set = 4;
 		init_param(p);
 	}
 	if (key == 82)

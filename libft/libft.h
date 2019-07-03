@@ -27,6 +27,7 @@ typedef struct	s_list
 }				t_list;
 
 int				ft_atoi(char const *str);
+int				ft_abs(int nb);
 void			ft_bzero(void *s, size_t n);
 char			*ft_capitalize(char *str);
 void			ft_foreach(int *tab, size_t lenght, void (*f)(int));
@@ -51,6 +52,7 @@ void			*ft_memcpy(void *dest, void const *src, size_t n);
 void			ft_memdel(void **ap);
 void			*ft_memmove(void *dest, void const *src, size_t n);
 void			*ft_memset(void *s, int c, size_t n);
+double			ft_pow(double x, int y);
 void			ft_putchar(char c);
 void			ft_putchar_fd(char c, int fd);
 void			ft_putendl(char const *s);
