@@ -99,7 +99,7 @@ void	slide(t_param *p, int key)
 int		key_hook(int key, t_param *p)
 {
 	if (key == 53)
-		put_exit("exit ./fdf");
+		put_exit(2);
 	if (key == 18)
 	{
 		p->id_set = 1;

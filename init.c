@@ -115,5 +115,5 @@ void		init_param(t_param *p)
 	else if (p->id_set == 4)
 		init_multi(p);
 	else
-		put_exit("Select a set:\n1 - Julia\n2 - Mandelbrot\n3 - BurningShip");
+		put_exit(1);
 }

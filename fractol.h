@@ -66,7 +66,7 @@ typedef struct	s_param
 	void		*win_ptr;
 }				t_param;
 
-void			put_exit(char *msg);
+void			put_exit(int id);
 void			put_color(t_param *p, int x, int y);
 void			put_color_no(t_param *p, int x, int y);
 void			put_color_random(t_param *p, int x, int y);
