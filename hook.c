@@ -86,11 +86,19 @@ void	slide_next(t_param *p, int key)
 	if (key == 47)
 		p->n_multi += 1;
 	if (key == 43)
+	{
 		p->n_multi -= 1;
+		if (p->n_multi <= 2)
+			p->n_multi = 2;
+	}
 	if (key == 37)
 		p->n_multi *= 10;
 	if (key == 40)
+	{
 		p->n_multi /= 10;
+		if (p->n_multi <= 2)
+			p->n_multi = 2;
+	}
 	if (key == 115)
 		init_param(p);
 	if (key == 279)
